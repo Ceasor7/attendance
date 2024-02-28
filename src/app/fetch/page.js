@@ -6,6 +6,7 @@ import { database } from '../firebaseConfig';
 
 const FetchData = () => {
   const [attendants, setAttendants] = useState([]);
+  const [totalRecords, setTotalRecords] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
@@ -20,6 +21,7 @@ const FetchData = () => {
             })
           );
           setAttendants(attendantArray);
+          setTotalRecords(attendantArray.length);
         } else {
           console.log('No data available');
         }
@@ -42,6 +44,10 @@ const FetchData = () => {
     attendant.fname.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const checkedAndConfirmedAttendants = filteredAttendants.filter(
+    (attendant) => attendant.checked && attendant.confirmed
+  );
+
   const handleToggleCheckbox = (id) => {
     const updatedAttendants = attendants.map((attendant) =>
       attendant.id === id
@@ -56,6 +62,11 @@ const FetchData = () => {
       <h1 className="text-4xl font-bold text-center my-10">
         Take attendance record
       </h1>
+      <div className="text-center mb-4">Total Records: {totalRecords}</div>
+      <div className="text-center mt-4">
+        Number of Checked and Confirmed Records:{' '}
+        {checkedAndConfirmedAttendants.length}
+      </div>
       <div className="mb-4 flex items-center justify-between">
         <div>
           <Link href="/" className="bg-red-500 px-8 py-3 text-white rounded-xl">
@@ -99,7 +110,7 @@ const FetchData = () => {
               onClick={() => handleConfirmAttendance(attendant.id)}
               disabled={attendant.confirmed || !attendant.checked}
             >
-              Confirmed
+              Confirm
             </button>
           </div>
         ))}
