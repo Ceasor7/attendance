@@ -58,33 +58,37 @@ const FetchData = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className=" mx-5 overflow-y-auto">
       <h1 className="text-4xl font-bold text-center my-10">
         Take attendance record
       </h1>
       <div className="text-center mb-4">Total Records: {totalRecords}</div>
       <div className="text-center mt-4">
-        Number of Checked and Confirmed Records:{' '}
-        {checkedAndConfirmedAttendants.length}
+        Checked and Confirmed Records: {checkedAndConfirmedAttendants.length}
       </div>
-      <div className="mb-4 flex items-center justify-between">
-        <div>
-          <Link href="/" className="bg-red-500 px-8 py-3 text-white rounded-xl">
+      <div className="mb-4 flex flex-col sm:flex-row items-center justify-between">
+        <div className="mt-4">
+          <Link
+            href="/"
+            className="bg-red-500 w-auto px-8 py-3 text-white rounded-xl"
+          >
             Home
           </Link>
         </div>
-        <div className="flex flex-row">
-          <p className="items-center justify-center text-center flex">Search</p>
+        <div className="flex flex-col sm:flex-row mt-5 mb-3">
+          <p className="items-center justify-center text-center flex">
+            Search here
+          </p>
           <input
             type="text"
-            placeholder="Search by title..."
+            placeholder="Search by Name..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="px-4 py-2 border ml-3 border-gray-300 rounded-md focus:outline-none focus:border-green-500"
+            className="px-4 py-2 border sm:ml-3 border-gray-300 rounded-md focus:outline-none focus:border-green-500"
           />
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {filteredAttendants.map((attendant) => (
           <div key={attendant.id} className="bg-gray-100 p-4 rounded-lg">
             <div className="flex flex-row">
