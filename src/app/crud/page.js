@@ -50,7 +50,7 @@ const page = () => {
         <div>
           <Link
             href="/upload"
-            className="bg-red-700 hidden px-7 py-3 rounded-lg text-white"
+            className="bg-red-700 px-7 py-3 rounded-lg text-white"
           >
             {' '}
             Upload Data
