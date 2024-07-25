@@ -1,8 +1,9 @@
 'use client';
 import { get, ref, set } from 'firebase/database';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { database } from '../firebaseConfig';
+import { auth, database } from '../firebaseConfig';
 
 const FetchData = () => {
   const [attendants, setAttendants] = useState([]);
@@ -57,11 +58,46 @@ const FetchData = () => {
     setAttendants(updatedAttendants);
   };
 
+  const [username, setUsername] = useState('');
+  const router = useRouter();
+
+  useEffect(() => {
+    const user = auth.currentUser;
+    if (user) {
+      setUsername(user.displayName);
+    } else {
+      router.push('/');
+    }
+  }, []);
+
+  const handleLogout = () => {
+    auth
+      .signOut()
+      .then(() => {
+        router.push('/');
+      })
+      .catch((error) => {
+        console.error('Logout error:', error);
+      });
+  };
+
   return (
-    <div className=" mx-5 overflow-y-auto">
+    <div className=" container min-h-screen mx-auto max-w-6xl overflow-y-auto">
       <h1 className="text-4xl font-bold text-center my-10">
         Take attendance record
       </h1>
+      <div className="flex flex-col justify-between sm:flex-row gap-10">
+        <div className="flex items-center justify-center gap-x-4 flex-row">
+          <h1 className="text-xl">Welcome</h1>
+          <p className="text-2xl italic font-bold"> {username}</p>
+        </div>
+        <button
+          onClick={handleLogout}
+          className="px-4 py-2 bg-red-600 text-white rounded-md"
+        >
+          Logout
+        </button>
+      </div>
       <div className="text-center mb-4">Total Records: {totalRecords}</div>
       <div className="text-center mt-4">
         Checked and Confirmed Records: {checkedAndConfirmedAttendants.length}

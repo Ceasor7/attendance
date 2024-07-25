@@ -1,17 +1,20 @@
 import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAbp0ffy3AFEkR7VRrL9oXhtfl6YpskdWE',
-  authDomain: 'auth-development-52ed4.firebaseapp.com',
-  databaseURL:
-    'https://auth-development-52ed4-default-rtdb.asia-southeast1.firebasedatabase.app/',
-  projectId: 'auth-development-52ed4',
-  storageBucket: 'auth-development-52ed4.appspot.com',
-  messagingSenderId: '171589561669',
-  appId: '1:171589561669:web:464fb13fbc1858a828622c',
+  apiKey: 'AIzaSyASmbtLZ70Vbmx2GLjE7AtMlUFxnzk4IAg',
+  authDomain: 'kitfest-trust.firebaseapp.com',
+  databaseURL: 'https://kitfest-trust-default-rtdb.firebaseio.com',
+  projectId: 'kitfest-trust',
+  storageBucket: 'kitfest-trust.appspot.com',
+  messagingSenderId: '269839718417',
+  appId: '1:269839718417:web:abccfbf1f32a9c509cb9b0',
+  measurementId: 'G-B9SCQW7VLE',
 };
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-export { database };
+const auth = getAuth();
+
+export { auth, database };
