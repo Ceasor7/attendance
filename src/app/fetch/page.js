@@ -86,14 +86,14 @@ const FetchData = () => {
       <h1 className="text-4xl font-bold text-center my-10">
         Take attendance record
       </h1>
-      <div className="flex flex-col justify-between sm:flex-row gap-10">
-        <div className="flex items-center justify-center gap-x-4 flex-row">
+      <div className="flex-col justify-center items-center flex sm:flex-row gap-5 mb-7">
+        <div className="flex items-center justify-center gap-x-2 flex-row">
           <h1 className="text-xl">Welcome</h1>
           <p className="text-2xl italic font-bold"> {username}</p>
         </div>
         <button
           onClick={handleLogout}
-          className="px-4 py-2 bg-red-600 text-white rounded-md"
+          className="px-4 py-2 w-56 bg-red-600 text-white rounded-md"
         >
           Logout
         </button>
@@ -105,7 +105,7 @@ const FetchData = () => {
       <div className="mb-4 flex flex-col sm:flex-row items-center justify-between">
         <div className="mt-4">
           <Link
-            href="/"
+            href="/crud"
             className="bg-red-500 w-auto px-8 py-3 text-white rounded-xl"
           >
             Home

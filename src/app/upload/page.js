@@ -36,18 +36,20 @@ export default function UploadData() {
           onChange={(e) => setFname(e.target.value)}
           className="border w-80 p-2 mb-4"
         />
+        <div className='flex justify-center items-center mx-auto flex-col sm:flex-row gap-y-8 gap-x-7'>
         <button
           onClick={handleAddData}
-          className="bg-green-700 text-white p-2 rounded-lg"
+          className="bg-green-700 text-white px-8 w-52 py-3 rounded-xl"
         >
           Submit data
         </button>
         <Link
-          href="/"
-          className="bg-red-700 text-white p-2 mt-2 text-center rounded-lg"
-        >
-          Home
-        </Link>
+            href="/crud"
+            className="bg-red-500 px-8 w-52 text-center py-3 text-white rounded-xl"
+          >
+            Home
+          </Link>
+        </div>
       </div>
     </div>
   );

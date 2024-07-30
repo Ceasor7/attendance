@@ -25,7 +25,7 @@ export default function Home() {
     <main className="min-h-screen mx-auto max-w-4xl flex items-center justify-center">
       <div className="flex items-center justify-center">
         <button
-          className="flex flex-row gap-6 w-96 items-center justify-center border-2 px-4 py-2 rounded-md bg-slate-800"
+          className="flex flex-row gap-6 w-52 sm:w-96 items-center justify-center border-2 px-4 py-2 rounded-md bg-slate-800"
           onClick={() => {
             signInWithGoogle();
           }}
